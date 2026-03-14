@@ -1,0 +1,53 @@
+body {
+    background: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.card {
+    background: #1e1e1e;
+    color: white;
+    border-radius: 12px;
+}
+
+/* MIC BUTTON */
+#mic-btn {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    font-size: 35px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#mic-btn:hover {
+    transform: scale(1.1);
+}
+
+/* PULSE ANIMATION */
+.listening {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
+    70% { box-shadow: 0 0 0 30px rgba(255,0,0,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+}
+
+/* FADE EFFECT */
+#transcript-box {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

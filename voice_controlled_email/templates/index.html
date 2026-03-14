@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Mobile Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- PWA Theme -->
+    <meta name="theme-color" content="#ff0000">
+
+    <title>Voice Mail App</title>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container text-center mt-5">
+
+    <h2 class="mb-4">🎙️ Voice Mail App</h2>
+
+    <p id="status" class="text-info fw-bold">
+        {{ message }}
+    </p>
+
+    <div id="transcript-box" class="card p-3 mb-4 shadow">
+        <h5>You said:</h5>
+        <p id="transcript-text">Waiting...</p>
+    </div>
+
+    <form method="POST" action="/process">
+        <button type="submit" id="mic-btn">
+            <i class="fas fa-microphone"></i>
+        </button>
+    </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+<!-- Register Service Worker -->
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/static/service-worker.js')
+    .then(() => console.log("Service Worker Registered"));
+}
+</script>
+
+</body>
+</html>
